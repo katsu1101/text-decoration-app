@@ -1,16 +1,16 @@
 "use client";
 
-import {cn}                    from "@/lib/cn";
-import type { TextInputTheme } from "@/lib/uiTheme";
+import {cn}                  from "@/lib/cn";
+import type {TextInputTheme} from "@/lib/uiTheme";
 
 type TextInputProps = {
   value: string;
-  onChange: (nextValue: string) => void;
+  onChangeAction: (nextValue: string) => void;
   placeholder?: string;
   theme: TextInputTheme;
 };
 
-export default function TextInput({ value, onChange, placeholder, theme }: TextInputProps) {
+export default function TextInput({value, onChangeAction, placeholder, theme}: TextInputProps) {
   return (
     <section className="flex justify-center">
       <div className="w-full max-w-[560px]">
@@ -31,7 +31,7 @@ export default function TextInput({ value, onChange, placeholder, theme }: TextI
             theme.textareaClass)}
           rows={3}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChangeAction(e.target.value)}
           placeholder={placeholder ?? "例）明日20:00 歌枠\n〇〇"}
           aria-label="入力"
         />

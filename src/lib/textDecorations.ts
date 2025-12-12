@@ -1,5 +1,4 @@
 // src/lib/textDecorations.ts
-import { alignMultilineMeasured } from "@/lib/textAlign";
 
 export type Pattern = {
   id: string;
@@ -7,14 +6,9 @@ export type Pattern = {
 };
 
 type BoxOpt = {
-  topL: string; topR: string;
-  botL: string; botR: string;
-  top: string; bot: string;
-  l: string; r: string;
-
-  // ★追加：上下の中央（1回だけ）
-  topC?: string;
-  botC?: string;
+  topLeft: string; topCenter?: string; top: string; topRight: string;
+  left: string; right: string;
+  bottomLeft: string; botCenter?: string; bottom: string; bottomRight: string;
 
   // 追加（任意）：左右のバランス(0..100)。50=中央寄せ
   leftPercent?: number;
@@ -23,19 +17,19 @@ type BoxOpt = {
   safetySpaces?: number;
 };
 
-type BoxOptInput = Partial<BoxOpt> & Pick<BoxOpt, "l" | "r">; // l/r だけ必須にする
+type BoxOptInput = Partial<BoxOpt> & Pick<BoxOpt, "left" | "right">; // l/r だけ必須にする
 
 const defaultBoxOpt: BoxOpt = {
-  topL: "", topC: "", top: "", topR: "",
-  l: "", r: "",
-  botL: "", botC: "", bot: "", botR: "",
+  topLeft: "", topCenter: "", top: "", topRight: "",
+  left: "", right: "",
+  bottomLeft: "", botCenter: "", bottom: "", bottomRight: "",
 
   leftPercent: 50,
   safetySpaces: 2,
 };
 
 const normalizeBoxOpt = (input: BoxOptInput): BoxOpt => {
-  return { ...defaultBoxOpt, ...input };
+  return {...defaultBoxOpt, ...input};
 };
 
 const splitLines = (text: string): string[] => text.replace(/\r\n/g, "\n").split("\n");
@@ -46,7 +40,7 @@ export const patterns: Pattern[] = [
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
-        { top: "━", bot: "━", l: " ", r: " " },
+        {top: "━", bottom: "━", left: " ", right: " "},
         measurer
       ),
   },
@@ -55,9 +49,10 @@ export const patterns: Pattern[] = [
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
-        { topL: "╭", top: "─", topR: "─╮",
-          l: "│", r: "　",
-          botL: "╰", botC: "ｖ", bot: "─",botR: "─╯",
+        {
+          topLeft: "╭", top: "─", topRight: "─╮",
+          left: "│", right: "　",
+          bottomLeft: "╰", botCenter: "ｖ", bottom: "─", bottomRight: "─╯",
         },
         measurer
       ),
@@ -67,9 +62,10 @@ export const patterns: Pattern[] = [
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
-        { topL: "┏", top: "━", topR: "━┓",
-          l: "┃", r: "　",
-          botL: "┗", botC: "┳", bot: "━",botR: "━┛",
+        {
+          topLeft: "┏", top: "━", topRight: "━┓",
+          left: "┃", right: "　",
+          bottomLeft: "┗", botCenter: "┳", bottom: "━", bottomRight: "━┛",
         },
         measurer
       ),
@@ -80,33 +76,15 @@ export const patterns: Pattern[] = [
       makeBoxMeasured(
         splitLines(t),
         {
-          topL: "✦ ", top: "─", topR: " ✦",
-          l: " ", r: " ",
-          botL: "✧ ", bot: "─", botR: " ✧"
+          topLeft: "✦ ", top: "─", topRight: " ✦",
+          left: " ", right: " ",
+          bottomLeft: "✧ ", bottom: "─", bottomRight: " ✧"
         },
         measurer
       ),
   },
-  // {
-  //   id: "kawaii_wings",
-  //   buildMeasured: (t, measurer) =>
-  //     makeBoxMeasured(
-  //       splitLines(t),
-  //       { l: "꒰ঌ", r: "໒꒱" },
-  //       measurer
-  //     ),
-  // },
-  // {
-  //   id: "kawaii_lace",
-  //   buildMeasured: (t, measurer) =>
-  //     makeBoxMeasured(
-  //       splitLines(t),
-  //       { l: "୨୧", r: "୨୧" },
-  //       measurer
-  //     ),
-  // },
   {
-    id: "hoge",
+    id: "ticket_bracket",
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
@@ -114,15 +92,15 @@ export const patterns: Pattern[] = [
           // ||◤　　　　　　　 ◥||
           // 　あああああ
           // ||◣　　　　　　　 ◢||
-          topL: "||◤", topR: "◥||",
-          l:"　", r: "　",
-          botL: "||◣", botR: "◢||"
+          topLeft: "||◤", topRight: "◥||",
+          left: "　", right: "　",
+          bottomLeft: "||◣", bottomRight: "◢||"
         },
         measurer
       ),
   },
   {
-    id: "hoge2",
+    id: "plate_caps",
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
@@ -130,15 +108,15 @@ export const patterns: Pattern[] = [
           // ◤▔▔▔▔▔▔▔▔▔▔◥
           //     2025年12月8日（月）
           // ◣▁▁▁▁▁▁▁▁▁▁◢
-          topL: "◤", top: "▔", topR: "◥",
-          l:"", r: "",
-          botL: "◣", bot: "▁", botR: "◢"
+          topLeft: "◤", top: "▔", topRight: "◥",
+          left: "", right: "",
+          bottomLeft: "◣", bottom: "▁", bottomRight: "◢"
         },
         measurer
       ),
   },
   {
-    id: "fuga",
+    id: "manga_shout",
     buildMeasured: (t, measurer) =>
       makeBoxMeasured(
         splitLines(t),
@@ -146,9 +124,10 @@ export const patterns: Pattern[] = [
           // ＿人人人人人人人人人人＿
           // ＞　ああああああああ　＜
           // ￣Y^Y^ Y^Y^Y^Y^Y^Y^Y￣
-          topL: "＿", top: "人", topR: "＿",
-          l:"＞", r: "　",
-          botL: "￣", bot: "Y", botR: "￣"},
+          topLeft: "＿", top: "人", topRight: "＿",
+          left: "＞", right: "　",
+          bottomLeft: "￣", bottom: "Y", bottomRight: "￣"
+        },
         measurer
       ),
   },
@@ -161,9 +140,10 @@ export const patterns: Pattern[] = [
           // ＼＼　 \ 　/ 　／／
           // 🕶𝙄𝙩'𝙨 𝙨𝙝𝙤𝙬 𝙩𝙞𝙢𝙚🕶
           // ／／　 /　 \　 ＼＼
-          topL: "＼＼", topC: '⧵ 　/', topR: "／／",
-          l:"　", r: "　",
-          botL: "／／", botC: "/　 ⧵", botR: "＼＼"},
+          topLeft: "＼＼", topCenter: '⧵ 　/', topRight: "／／",
+          left: "　", right: "　",
+          bottomLeft: "／／", botCenter: "/　 ⧵", bottomRight: "＼＼"
+        },
         measurer
       ),
   },
@@ -177,9 +157,10 @@ export const patterns: Pattern[] = [
           // X(旧Twitter)の文字装飾！
           // 　目立つ投稿に役立つ”囲み”テンプレ
           // ୨୧‥∵‥‥∵‥‥∵‥‥∵‥‥∵‥୨୧
-          topL: "୨୧", top: '‥∵‥', topR: "୨୧",
-          l:"　", r: "　",
-          botL: "୨୧", bot: "‥∵‥", botR: "୨୧"},
+          topLeft: "୨୧", top: '‥∵‥', topRight: "୨୧",
+          left: "　", right: "　",
+          bottomLeft: "୨୧", bottom: "‥∵‥", bottomRight: "୨୧"
+        },
         measurer
       ),
   },
@@ -192,9 +173,9 @@ export const patterns: Pattern[] = [
           // ＿＿＿◣＿＿＿＿＿◢＿＿＿
           // 　　　文字を記載🐾
           // ＿＿＿＿＿＿＿＿＿＿＿＿𓂃
-          topC: '◣＿＿＿＿◢', top: "＿",
-          l:"　", r: "　",
-          bot: "＿", botR: "𓂃",
+          topCenter: '◣＿＿＿＿◢', top: "＿",
+          left: "　", right: "　",
+          bottom: "＿", bottomRight: "𓂃",
         },
         measurer
       ),
@@ -208,9 +189,9 @@ export const patterns: Pattern[] = [
           // ＿＿＿◣＿＿＿＿＿◢＿＿＿
           // 　　　文字を記載🐾
           // ＿＿＿＿＿＿＿＿＿＿＿＿𓂃
-          topL: '╋━━',
-          l:"　", r: "　",
-          botR: "━━━╋",
+          topLeft: '╋━━',
+          left: "　", right: "　",
+          bottomRight: "━━━╋",
         },
         measurer
       ),
@@ -287,26 +268,26 @@ const makeBoxMeasured = (lines: string[], optInput: BoxOptInput, measurer: TextM
   const targetContentPx = maxLinePx + spacePx * safetySpaces;
 
   // 2) 本文行の固定パーツ（あなたの従来仕様：l と r の内側にスペース1個）
-  const bodyLeft = `${opts.l} `;
-  const bodyRight = ` ${opts.r}`;
+  const bodyLeft = `${opts.left} `;
+  const bodyRight = ` ${opts.right}`;
 
   // 3) ここが「全行共通の目標幅(px)」
   const targetLinePx = measurer.measurePx(bodyLeft) + targetContentPx + measurer.measurePx(bodyRight);
 
   const leftPercent = opts.leftPercent ?? 50; // 50=中央寄せ
 
-  const topCenter = opts.topC ?? "";
-  const botCenter = opts.botC ?? "";
+  const topCenter = opts.topCenter ?? "";
+  const botCenter = opts.botCenter ?? "";
 
   // 4) 上下線（同じ targetLinePx を使う）
   const top =
-    (opts.topL === "" && opts.topR === "" && opts.top === "")
+    (opts.topLeft === "" && opts.topRight === "" && opts.top === "")
       ? ""
       : buildLineByPercent({
         targetPx: targetLinePx,
-        left: opts.topL,
+        left: opts.topLeft,
         center: topCenter, // ★ここ
-        right: opts.topR,
+        right: opts.topRight,
         fill: opts.top,
         leftPercent: 50,
         measurer,
@@ -314,14 +295,14 @@ const makeBoxMeasured = (lines: string[], optInput: BoxOptInput, measurer: TextM
       });
 
   const bottom =
-    (opts.botL === "" && opts.botR === "" && opts.bot === "")
+    (opts.bottomLeft === "" && opts.bottomRight === "" && opts.bottom === "")
       ? ""
       : buildLineByPercent({
         targetPx: targetLinePx,
-        left: opts.botL,
+        left: opts.bottomLeft,
         center: botCenter, // ★ここ
-        right: opts.botR,
-        fill: opts.bot,
+        right: opts.bottomRight,
+        fill: opts.bottom,
         leftPercent: 50,
         measurer,
         minRepeat: 1,

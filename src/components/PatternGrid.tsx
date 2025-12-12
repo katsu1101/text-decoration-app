@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/cn";
-import { patterns, type TextMeasurer } from "@/lib/textDecorations";
-import type { PatternGridTheme } from "@/lib/uiTheme";
+import {cn}                          from "@/lib/cn";
+import {patterns, type TextMeasurer} from "@/lib/textDecorations";
+import type {PatternGridTheme}       from "@/lib/uiTheme";
+import {useEffect, useRef, useState} from "react";
 
 type PatternGridProps = {
   inputText: string;
-  onCopied: (message: string) => void;
+  onCopiedAction: (message: string) => void;
   theme: PatternGridTheme;
 };
 
@@ -24,7 +24,7 @@ const copyToClipboard = async (text: string): Promise<void> => {
   textArea.style.top = "-9999px";
   document.body.appendChild(textArea);
   textArea.select();
-  document.execCommand("copy");
+  await navigator.clipboard.writeText("copy");
   document.body.removeChild(textArea);
 };
 
@@ -55,7 +55,7 @@ const createMeasurerFromElement = (element: HTMLElement): TextMeasurer | null =>
   };
 };
 
-export default function PatternGrid({ inputText, onCopied, theme }: PatternGridProps) {
+export default function PatternGrid({inputText, onCopiedAction, theme}: PatternGridProps) {
   const firstPreviewRef = useRef<HTMLPreElement | null>(null);
   const [measurer, setMeasurer] = useState<TextMeasurer | null>(null);
 
@@ -77,9 +77,9 @@ export default function PatternGrid({ inputText, onCopied, theme }: PatternGridP
 
     try {
       await copyToClipboard(output);
-      onCopied("コピーしました");
+      onCopiedAction("コピーしました");
     } catch {
-      onCopied("コピーに失敗しました");
+      onCopiedAction("コピーに失敗しました");
     }
   };
 
