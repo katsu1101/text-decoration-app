@@ -1,0 +1,50 @@
+name: Deploy (Next.js static) to gh-pages
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gh-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # npm 前提（pnpm/yarn の場合は下の注記を参照）
+      - name: Install dependencies
+        run: npm ci
+
+      # basePath を環境変数で渡したい場合に使えます（任意）
+      # next.config で process.env.NEXT_PUBLIC_BASE_PATH を参照しているなら有効です
+      - name: Set NEXT_PUBLIC_BASE_PATH (optional)
+        run: echo "NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}" >> $GITHUB_ENV
+
+      - name: Build (static export -> out/)
+        run: npm run build
+
+      # Jekyll を無効化（_next などを潰されないため）
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./out
+          force_orphan: true
