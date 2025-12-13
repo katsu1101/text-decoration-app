@@ -1,6 +1,15 @@
-import {TextMeasurer} from "@/lib/textDecorations";
+import {TextMeasurer} from "@/lib/decorationsText";
 
 export type Pattern = {
   id: string;
+  title: string;
   buildMeasured: (inputText: string, measurer: TextMeasurer) => string;
+};
+
+export type ModeId = "jp" | "latin" | "combine";
+
+export type ModeConfig = {
+  title: string;
+  patterns: Pattern[];
+  examples: string[];
 };

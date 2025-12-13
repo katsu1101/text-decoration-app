@@ -1,7 +1,7 @@
 "use client";
 
 import {cn}                          from "@/lib/cn";
-import {type TextMeasurer}           from "@/lib/textDecorations";
+import {type TextMeasurer}           from "@/lib/decorationsText";
 import {Pattern}                     from "@/lib/type";
 import type {PatternGridTheme}       from "@/lib/uiTheme";
 import {useEffect, useRef, useState} from "react";
@@ -106,6 +106,13 @@ export default function PatternGrid({inputText, onCopiedAction, theme, patterns}
               theme.cardClass
             )}
           >
+            <span
+              className={cn(
+                "absolute top-1.5 left-1.5",
+                "h-5 pl-3 pr-3 rounded-full grid place-items-center",
+                "border text-sm select-none shadow-sm",
+                theme.badgeClass
+              )}>{p.title}</span>
             <span
               title="コピー"
               aria-hidden="true"
