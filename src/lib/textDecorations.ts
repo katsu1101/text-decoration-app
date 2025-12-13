@@ -1,9 +1,6 @@
 // src/lib/textDecorations.ts
 
-export type Pattern = {
-  id: string;
-  buildMeasured: (inputText: string, measurer: TextMeasurer) => string;
-};
+import {Pattern} from "@/lib/type";
 
 type BoxOpt = {
   topLeft: string; topCenter?: string; top: string; topRight: string;

@@ -1,7 +1,8 @@
 "use client";
 
 import {cn}                          from "@/lib/cn";
-import {patterns, type TextMeasurer} from "@/lib/textDecorations";
+import {type TextMeasurer}           from "@/lib/textDecorations";
+import {Pattern}                     from "@/lib/type";
 import type {PatternGridTheme}       from "@/lib/uiTheme";
 import {useEffect, useRef, useState} from "react";
 
@@ -9,6 +10,7 @@ type PatternGridProps = {
   inputText: string;
   onCopiedAction: (message: string) => void;
   theme: PatternGridTheme;
+  patterns: Pattern[]
 };
 
 const copyToClipboard = async (text: string): Promise<void> => {
@@ -55,7 +57,7 @@ const createMeasurerFromElement = (element: HTMLElement): TextMeasurer | null =>
   };
 };
 
-export default function PatternGrid({inputText, onCopiedAction, theme}: PatternGridProps) {
+export default function PatternGrid({inputText, onCopiedAction, theme, patterns}: PatternGridProps) {
   const firstPreviewRef = useRef<HTMLPreElement | null>(null);
   const [measurer, setMeasurer] = useState<TextMeasurer | null>(null);
 

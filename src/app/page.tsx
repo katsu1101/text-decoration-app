@@ -1,5 +1,5 @@
 import ClientPage from "@/components/ClientPage";
 
 export default function Page() {
-  return <ClientPage/>;
+  return <ClientPage mode="jp"/>;
 }
