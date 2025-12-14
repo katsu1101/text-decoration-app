@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "npx serve@latest out",
+    "build": "cross-env NODE_ENV=production NEXT_PUBLIC_BASE_PATH=/text-decoration-app next build",
     "lint": "eslint"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "@radix-ui/react-tabs": "^1.1.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

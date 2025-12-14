@@ -33,11 +33,13 @@ const copyToClipboard = async (text: string): Promise<void> => {
 const createMeasurerFromElement = (element: HTMLElement): TextMeasurer | null => {
   const style = getComputedStyle(element);
 
-  // style.font が取れない環境もあるので fallback を用意
-  const font =
-    style.font && style.font.length > 0
-      ? style.font
-      : `${style.fontStyle} ${style.fontVariant} ${style.fontWeight} ${style.fontSize}/${style.lineHeight} ${style.fontFamily}`;
+  const fontStyle = style.fontStyle || "normal";
+  const fontWeight = style.fontWeight || "400";
+  const fontSize = style.fontSize || "15px";
+  const fontFamily = style.fontFamily || '"Segoe UI", Arial, sans-serif';
+
+  // line-height は measureText には基本影響しないので入れなくてOK（入れても害は少ない）
+  const font = `${fontStyle} ${fontWeight} ${fontSize} ${fontFamily}`;
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");

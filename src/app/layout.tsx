@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: siteMeta.description,
   metadataBase: new URL(siteMeta.url),
   keywords: siteMeta.keywords,
-  manifest: `${siteMeta.basePath}/manifest.json`, // TODO
+  manifest: `${siteMeta.basePath}/manifest.json`,
+  // TODO: "src": "icon-192x192.png",
+  // TODO: "src": "icon-512x512.png",
 
   // ✅ icons（favicon）
   icons: { // TODO
@@ -63,16 +65,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+export default function RootLayout({children}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
     <head>
       <title>{siteMeta.name}</title>
-
       <meta name="apple-mobile-web-app-capable" content="yes"/>
       <meta
         name="apple-mobile-web-app-status-bar-style"
@@ -83,9 +82,7 @@ export default function RootLayout({
         content={siteMeta.name}
       />
       <meta name="mobile-web-app-capable" content="yes"/>
-
     </head>
-
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >

@@ -89,7 +89,7 @@ export const jpModeConfig: ModeConfig = {
           splitLines(t),
           {
             topLeft: "＿", top: "人", topRight: "＿",
-            left: "＞", right: "　",
+            left: "＞", right: "＜",
             bottomLeft: "￣", bottom: "Y", bottomRight: "￣",
           },
           measurer
