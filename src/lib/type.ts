@@ -10,6 +10,6 @@ export type ModeId = "jp" | "latin" | "combine";
 
 export type ModeConfig = {
   title: string;
+  example: string;
   patterns: Pattern[];
-  examples: string[];
 };

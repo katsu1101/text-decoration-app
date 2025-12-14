@@ -3,6 +3,7 @@ import {ModeConfig}                  from "@/lib/type";
 
 export const jpModeConfig: ModeConfig = {
   title: "枠デコ（日本語）",
+  example: "7月4日は\n戸定梨香の誕生日！",
   patterns: [
     {
       id: "rule",
@@ -150,15 +151,5 @@ export const jpModeConfig: ModeConfig = {
           measurer
         ),
     },
-  ],
-  examples: [
-    "7月4日は\n戸定梨香の誕生日！",
-    "明日20:00 歌枠🎤\nみんな集合！",
-    "新作公開しました✨\n感想ください！",
-    "今夜はまったり雑談☕\n22:00〜\n来てくれたら嬉しいな",
-    "おはようございます☀️\n今日もゆるっと\nがんばろ〜",
-    "配信ありがとう！\n余韻がすごい…\nまた次も楽しみ",
-    "告知です📢\n今週末コラボ！\n詳細はこのあと",
-    "はじめての人も大歓迎！\n気軽にコメントしてね",
   ],
 };

@@ -3,6 +3,7 @@ import {ModeConfig}      from "@/lib/type";
 
 export const latinModeConfig: ModeConfig = {
   title: "英字デコ",
+  example: "Tojou Linca",
   patterns: [
 
     {
@@ -63,10 +64,4 @@ export const latinModeConfig: ModeConfig = {
       buildMeasured: (t) => applyLatinStyle(t, "strikeCombining")
     },
   ],
-  examples: [
-    "abcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n0123456789",
-    "New drop ✨\ncheck it out!",
-    "Thank you!\nsee you next live",
-    "Coming soon\nstay tuned",
-  ]
 };
