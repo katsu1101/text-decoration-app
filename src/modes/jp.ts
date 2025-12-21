@@ -1,4 +1,4 @@
-import {makeBoxMeasured, splitLines, TextMeasurer} from "@/lib/decorationsText";
+import {makeBoxMeasured, splitLines} from "@/lib/decorationsText";
 import {ModeConfig}                                from "@/lib/type";
 
 export const jpModeConfig: ModeConfig = {
