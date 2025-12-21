@@ -91,10 +91,12 @@ export default function CombinePage() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-4 items-start">
           {/* 左：入力欄 */}
           <section
-            className="rounded-2xl border bg-white/70 dark:bg-black/30 backdrop-blur p-3 md:p-4 flex flex-col min-h-[65dvh]">
-            <label className="block text-sm font-medium mb-2">入力（大きめ）</label>
+            className="rounded-2xl border bg-white/70 dark:bg-black/30 backdrop-blur
+            p-3 md:p-4 flex flex-col min-h-[10dvh]">
+            <label className="block text-sm font-medium mb-2">入力</label>
 
             <textarea
+              rows={3}
               ref={textareaRef}
               defaultValue={combineModeConfig.example}
               onInput={(e) => {
@@ -124,7 +126,7 @@ export default function CombinePage() {
                     ) : null}
                   </div>
 
-                  <div className="grid grid-cols-6 sm:grid-cols-8 lg:grid-cols-10 gap-2">
+                  <div className="grid grid-cols-9 gap-2">
                     {group.buttons.map((b) => (
                       <button
                         key={b.id}

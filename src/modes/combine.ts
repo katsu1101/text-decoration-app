@@ -53,12 +53,15 @@ export const DIACRITIC_GROUPS: readonly DiacriticGroup[] = [
   },
   {
     id: "bottom",
-    label: "下につく",
+    label: "下や全体につく",
     description: "呪い感・重さが出る（環境差は少し増える）",
     buttons: [
       {id: "dotBelow", title: "ドット下（ạ）", marks: ["\u0323"], sample: "ạ"},
       {id: "cedilla", title: "セディーユ（Ç）", marks: ["\u0327"], sample: "Ç"},
       {id: "ogonek", title: "フック（Ą）", marks: ["\u0328"], sample: "Ą"},
+
+      {id: "strikeComb", title: "傷（̶）", marks: ["\u0336"], sample: "̶"},
+      {id: "slashComb", title: "スラッシュ（̸）", marks: ["\u0338"], sample: "̸"},
     ],
   },
   {
@@ -75,14 +78,5 @@ export const DIACRITIC_GROUPS: readonly DiacriticGroup[] = [
       {id: "curse", sample: "🕯️", title: "呪い", marks: ["\u0323", "\u0331", "\u0324"]},  // ̣ ̱ ̤
       {id: "glitch", sample: "👾", title: "グリッチ", marks: ["\u0336", "\u0338", "\u0303"]}, // ̶ ̸ ̃
     ]
-  },
-  {
-    id: "glitch",
-    label: "グリッチ",
-    description: "傷・禁止っぽい。崩れたらそれも味",
-    buttons: [
-      {id: "strikeComb", title: "傷（̶）", marks: ["\u0336"], sample: "̶"},
-      {id: "slashComb", title: "スラッシュ（̸）", marks: ["\u0338"], sample: "̸"},
-    ],
   },
 ] as const;

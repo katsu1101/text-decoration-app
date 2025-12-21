@@ -1,5 +1,5 @@
-import {applyLatinStyle} from "@/lib/decorationsLatin"
-import {ModeConfig}      from "@/lib/type";
+import {applyLatinStyle, toScriptBold} from "@/lib/decorationsLatin"
+import {ModeConfig}                    from "@/lib/type";
 
 export const latinModeConfig: ModeConfig = {
   title: "英字デコ",
@@ -21,6 +21,11 @@ export const latinModeConfig: ModeConfig = {
     {
       id: "latin_blackboard", title: "黒板太字",
       buildMeasured: (t) => applyLatinStyle(t, "doubleStruck")
+    },
+    {
+      id: "latin_script_bold",
+      title: "筆記体",
+      buildMeasured: (t) => toScriptBold(t),
     },
     {
       id: "latin_sans_bold", title: "ゴシック太字",
@@ -63,5 +68,6 @@ export const latinModeConfig: ModeConfig = {
       title: "取り消し線",
       buildMeasured: (t) => applyLatinStyle(t, "strikeCombining")
     },
-  ],
+
+  ]
 };

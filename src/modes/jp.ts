@@ -1,5 +1,5 @@
-import {makeBoxMeasured, splitLines} from "@/lib/decorationsText";
-import {ModeConfig}                  from "@/lib/type";
+import {makeBoxMeasured, splitLines, TextMeasurer} from "@/lib/decorationsText";
+import {ModeConfig}                                from "@/lib/type";
 
 export const jpModeConfig: ModeConfig = {
   title: "枠デコ（日本語）",
@@ -151,5 +151,18 @@ export const jpModeConfig: ModeConfig = {
           measurer
         ),
     },
+    {
+      // 王冠括弧
+      id: "crown_brackets",
+      title: "꧁꧂",
+      buildMeasured: (t, measurer) =>
+        makeBoxMeasured(
+          splitLines(t),
+          {
+            left: "꧁", right: "꧂",
+          },
+          measurer
+        ),
+    }
   ],
 };
