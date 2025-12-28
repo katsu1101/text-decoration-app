@@ -2,10 +2,14 @@
   "name": "text-decoration-app",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.26.2",
   "scripts": {
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production NEXT_PUBLIC_BASE_PATH=/text-decoration-app next build",
     "lint": "eslint"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
