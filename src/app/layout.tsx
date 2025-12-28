@@ -6,9 +6,15 @@ import "./globals.css";
 import React               from "react";
 
 export const metadata: Metadata = {
-  title: {default: siteMeta.name, template: `%s | ${siteMeta.name}`},
+  title: {
+    default: siteMeta.name,
+    template: `%s | ${siteMeta.name}`,
+  },
   description: siteMeta.description,
   metadataBase: new URL(siteMeta.url),
+  alternates: {
+    canonical: "./",
+  },
   keywords: siteMeta.keywords,
   manifest: `${siteMeta.basePath}/manifest.json`,
 
@@ -42,7 +48,7 @@ export const metadata: Metadata = {
     creator: "@katsu1101",
     title: siteMeta.name,
     description: siteMeta.description,
-    images: ["og-image.png"],
+    images: [`${siteMeta.basePath}/og-image.png`],
   },
 };
 
@@ -56,14 +62,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({children}: Readonly<{
+export default function RootLayout({children}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-    <head>
-      <title>{siteMeta.name}</title>
-    </head>
+    <html lang="ja">
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
