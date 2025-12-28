@@ -24,29 +24,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
+          # cache: pnpm  ← ここは消す（pnpm未導入だと落ちる）
 
-      # pnpm（Corepack 経由。package.json の packageManager を優先）
-      - name: Enable Corepack + pnpm
-        run: |
-          corepack enable
-          # package.json に "packageManager": "pnpm@x.y.z" がある場合はそれが使われます
-          # ない場合でも CI が揺れないよう、ここで固定します（最新: 10.26.2 / 2025-12-23）
-          corepack prepare pnpm@10.26.2 --activate
+      - name: Setup pnpm (with cache)
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.26.2
+          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # basePath を環境変数で渡したい場合に使えます（任意）
-      # next.config で process.env.NEXT_PUBLIC_BASE_PATH を参照しているなら有効です
+      # basePath を env で渡すなら、package.json の build からハードコードを消すのがベスト（後述）
       - name: Set NEXT_PUBLIC_BASE_PATH (optional)
         run: echo "NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Build (static export -> out/)
         run: pnpm run build
 
-      # Jekyll を無効化（_next などを潰されないため）
       - name: Disable Jekyll
         run: touch out/.nojekyll
 
