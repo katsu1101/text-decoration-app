@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Mode = {
-  value: "ja" | "latin" | "combine";
+  value: "ja" | "eisu" | "mori";
   href: string;
   label: string;        // 表示名（短く）
   sub?: string;         // 小さめ補助（任意）
@@ -15,13 +15,13 @@ type Mode = {
 
 const MODES: Mode[] = [
   { value: "ja", href: "/",        label: "枠デコ",   sub: "日本語", icon: "🖼️" },
-  { value: "latin", href: "/latin",  label: "英字デコ", sub: "ABC",  icon: "🔤" },
-  { value: "combine", href: "/combine", label: "もり文字", sub: "結合", icon: "✨" },
+  { value: "eisu", href: "/eisu",  label: "英字デコ", sub: "ABC",  icon: "🔤" },
+  { value: "mori", href: "/mori", label: "もり文字", sub: "結合", icon: "✨" },
 ];
 
 const modeFromPath = (pathname: string): Mode["value"] => {
-  if (pathname.startsWith("/latin")) return "latin";
-  if (pathname.startsWith("/combine")) return "combine";
+  if (pathname.startsWith("/eisu")) return "eisu";
+  if (pathname.startsWith("/mori")) return "mori";
   return "ja";
 };
 

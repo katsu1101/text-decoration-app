@@ -11,10 +11,10 @@ import {useState}         from "react";
 
 
 interface ClientPageProps {
-  mode?: "jp" | "latin" | "combine"
+  mode?: "waku" | "eisu" | "mori"
 }
 
-export default function ClientPage({mode = "jp"}: ClientPageProps) {
+export default function ClientPage({mode = "waku"}: ClientPageProps) {
   const config: ModeConfig = modeConfigMap[mode];
   const [inputText, setInputText] = useState("");
   const [toastMessage, setToastMessage] = useState<string | null>(null);

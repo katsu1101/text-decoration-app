@@ -1,16 +1,17 @@
 "use client";
 
 import {cn}                                  from "@/lib/cn";
-import {applyToSelection, Selection}         from "@/lib/decorationsCombinet"
+import {applyToSelection, Selection}         from "@/lib/decorationsMori";
 import {defaultPageTheme}                    from "@/lib/uiTheme";
-import {combineModeConfig, DIACRITIC_GROUPS} from "@/modes/combine";
+import {moriModeConfig, DIACRITIC_GROUPS} from "@/modes/mori";
 import React, {useRef, useState}             from "react";
 
 const keepSelection = (event: React.SyntheticEvent) => {
   event.preventDefault(); // フォーカス移動を防ぐ
 };
 
-export default function CombinePage() {
+export default function ClientMoriPage() {
+
   const [, setText] = useState<string>("");
   const [, setPendingSelection] = useState<Selection | null>(null);
   const [hint, setHint] = useState<string>("");
@@ -81,11 +82,6 @@ export default function CombinePage() {
       <div className={cn("fixed inset-0 -z-10", theme.pageBackgroundClass)}/>
 
       <div className="px-4 py-4 md:px-6 md:py-6 max-w-[1100px] mx-auto flex flex-col gap-4">
-        <header className="flex flex-col gap-1">
-          <h1 className="text-lg md:text-xl font-semibold tracking-tight">
-            アクセント文字（選択して適用）
-          </h1>
-        </header>
 
         {/* ✅ 左：入力 / 右：ボタン（PCは2カラム、スマホは縦並び） */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-4 items-start">
@@ -98,7 +94,7 @@ export default function CombinePage() {
             <textarea
               rows={3}
               ref={textareaRef}
-              defaultValue={combineModeConfig.example}
+              defaultValue={moriModeConfig.example}
               onInput={(e) => {
                 const el = e.currentTarget;
                 setText(el.value); // React側はミラー。Undo/Redo含めて追従します
@@ -109,7 +105,9 @@ export default function CombinePage() {
                 "focus:ring-black/10 dark:focus:ring-white/15")}
               placeholder={"ここに入力して、範囲選択してからボタンで装飾します"}
             />
-
+            <div className="xlike text-[15px] leading-5">
+              Tojou Linca k̄ āw̄ äīī
+            </div>
             <div className="mt-2 text-xs opacity-80">{hint}</div>
           </section>
 

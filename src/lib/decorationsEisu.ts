@@ -5,7 +5,7 @@
  * - 合成文字（下線/取り消し線）は表示が不安定になりやすい（でも「それっぽさ」は強い）
  */
 
-type LatinStyle =
+type EisuStyle =
   | "bold"
   | "italic"
   | "boldItalic"
@@ -20,7 +20,7 @@ type LatinStyle =
   | "underlineCombining"
   | "strikeCombining";
 
-type LatinOffset = {
+type EisuOffset = {
   upper: number; // 'A'
   lower: number; // 'a'
   digit?: number; // '0'（無いスタイルもある）
@@ -28,7 +28,7 @@ type LatinOffset = {
 
 const OFFSETS: Record<
   Exclude<
-    LatinStyle,
+    EisuStyle,
     | "circled"
     | "parenthesized"
     | "squared"
@@ -37,7 +37,7 @@ const OFFSETS: Record<
     | "underlineCombining"
     | "strikeCombining"
   >,
-  LatinOffset
+  EisuOffset
 > = {
   bold: {upper: 0x1d400, lower: 0x1d41a, digit: 0x1d7ce},
   italic: {upper: 0x1d434, lower: 0x1d44e}, // 数字は無し
@@ -210,7 +210,7 @@ const toBlackboard = (text: string): string => {
   }).join("");
 };
 
-export const applyLatinStyle = (text: string, style: LatinStyle): string => {
+export const applyEisuStyle = (text: string, style: EisuStyle): string => {
   switch (style) {
     case "bold":
     case "italic":

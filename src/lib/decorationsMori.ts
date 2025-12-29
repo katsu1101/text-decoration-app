@@ -1,6 +1,6 @@
 export type Selection = Readonly<{ start: number; end: number }>;
 
-const isAsciiLatinLetter = (ch: string): boolean => {
+const isAsciiEisuLetter = (ch: string): boolean => {
   const codePoint = ch.codePointAt(0);
   if (codePoint === undefined) return false;
   const isUpper = codePoint >= 0x41 && codePoint <= 0x5a;
@@ -8,9 +8,9 @@ const isAsciiLatinLetter = (ch: string): boolean => {
   return isUpper || isLower;
 };
 
-const applyCombiningToLatin = (text: string, combiningMarks: string[]): string => {
+const applyCombiningToEisu = (text: string, combiningMarks: string[]): string => {
   const decorated = Array.from(text)
-    .map((ch) => (isAsciiLatinLetter(ch) ? `${ch}${combiningMarks.join("")}` : ch))
+    .map((ch) => (isAsciiEisuLetter(ch) ? `${ch}${combiningMarks.join("")}` : ch))
     .join("");
 
   // 可能なら Ā のような合成済み文字に寄せる
@@ -31,7 +31,7 @@ export const applyToSelection = (
   const selected = fullText.slice(selection.start, selection.end);
   const after = fullText.slice(selection.end);
 
-  const replaced = applyCombiningToLatin(selected, combiningMarks);
+  const replaced = applyCombiningToEisu(selected, combiningMarks);
   const nextText = before + replaced + after;
 
   // textareaの selectionStart/End は UTF-16 index なので length で合わせる

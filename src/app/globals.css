@@ -55,11 +55,8 @@
     font-variant-ligatures: normal;
 
     /* ★ここが本体：Xっぽい font shorthand */
-    font: 15px/20px system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Hiragino Sans", "Hiragino Kaku Gothic ProN",
-    "Yu Gothic UI", Meiryo, "Noto Sans JP",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font: 15px/20px "Segoe UI", Meiryo, "Noto Sans", Roboto, Helvetica, Arial,
+        "Yu Gothic UI", "Noto Sans JP", sans-serif;
 
     /* pre のベース指定（等幅用）が残っても崩れにくくする保険 */
     font-feature-settings: normal;

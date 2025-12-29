@@ -1,7 +1,8 @@
-import type { MetadataRoute } from "next";
+import {siteMeta}           from "@/lib/siteMetadata";
+import {sitemapUrl}         from "@/lib/url";
+import type {MetadataRoute} from "next";
 
-const siteUrl = "https://katsu1101.github.io";
-const basePath = "/text-decoration-app";
+export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: ["/"],
       },
     ],
-    sitemap: `${siteUrl}${basePath}/sitemap.xml`,
+    sitemap: sitemapUrl(siteMeta.url),
   };
 }

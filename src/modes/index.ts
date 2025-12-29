@@ -1,10 +1,10 @@
 import {ModeConfig, ModeId} from "@/lib/type";
-import {combineModeConfig}  from "./combine";
-import {jpModeConfig}       from "./jp";
-import {latinModeConfig}    from "./latin";
+import {jpModeConfig}       from "@/modes/waku";
+import {moriModeConfig}  from "./mori";
+import {eisuModeConfig}    from "./eisu";
 
 export const modeConfigMap: Record<ModeId, ModeConfig> = {
-  jp: jpModeConfig,
-  latin: latinModeConfig,
-  combine: combineModeConfig,
+  waku: jpModeConfig,
+  eisu: eisuModeConfig,
+  mori: moriModeConfig,
 } as const;

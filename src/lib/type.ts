@@ -6,7 +6,7 @@ export type Pattern = {
   buildMeasured: (inputText: string, measurer: TextMeasurer) => string;
 };
 
-export type ModeId = "jp" | "latin" | "combine";
+export type ModeId = "waku" | "eisu" | "mori";
 
 export type ModeConfig = {
   title: string;

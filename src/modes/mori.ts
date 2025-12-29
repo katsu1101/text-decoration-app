@@ -1,19 +1,19 @@
-import {applyLatinStyle} from "@/lib/decorationsLatin";
+import {applyEisuStyle} from "@/lib/decorationsEisu";
 import {ModeConfig}      from "@/lib/type";
 
-export const combineModeConfig: ModeConfig = {
+export const moriModeConfig: ModeConfig = {
   title: "",
   example: "Tojou Linca kawaii",
   patterns: [
     {
-      id: "latin_underline",
+      id: "eisu_underline",
       title: "下線",
-      buildMeasured: (t) => applyLatinStyle(t, "underlineCombining")
+      buildMeasured: (t) => applyEisuStyle(t, "underlineCombining")
     },
     {
-      id: "latin_strike",
+      id: "eisu_strike",
       title: "ストライク",
-      buildMeasured: (t) => applyLatinStyle(t, "strikeCombining")
+      buildMeasured: (t) => applyEisuStyle(t, "strikeCombining")
     },
   ],
 }
