@@ -24,6 +24,11 @@ export default function Page() {
         </p>
       </section>
       <ClientPage mode="waku"/>
+      <section className="px-4 pt-2 max-w-[1100px] mx-auto">
+        <p className="text-sm opacity-70">
+          ※ このアプリは戸定梨香さん応援用（非公式）に作成しましたが、文字装飾ツールとして誰でも使えます。
+        </p>
+      </section>
     </>
   );
 }

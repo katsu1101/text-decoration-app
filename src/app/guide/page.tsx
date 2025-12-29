@@ -14,6 +14,9 @@ export default function Page() {
       <p className="text-sm opacity-80">
         各モードの「手順」「注意点」「よくある質問」をまとめています。
       </p>
+      <p className="text-sm opacity-70">
+        ※ このアプリは戸定梨香さん応援用（非公式）に作成しましたが、文字装飾ツールとして誰でも使えます。
+      </p>
 
       <ul className="list-disc list-inside space-y-2">
         <li>
