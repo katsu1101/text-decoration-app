@@ -1,6 +1,7 @@
 // src/app/eisu/page.tsx
 import ClientPage      from "@/components/ClientPage";
 import type {Metadata} from "next";
+import Link            from "next/link";
 
 export const metadata: Metadata = {
   title: "デコ文字メーカー｜英字デコ",
@@ -16,9 +17,9 @@ export default function EisuPage() {
       </h1>
       <p className="text-xs opacity-70 leading-snug">
         アルファベットを装飾文字に変換できます。
-        <a href="../../guide/eisu" className="underline ml-1">
+        <Link href="/guide/eisu" className="underline ml-1">
           使い方
-        </a>
+        </Link>
       </p>
     </section>
     <ClientPage mode="eisu"/>

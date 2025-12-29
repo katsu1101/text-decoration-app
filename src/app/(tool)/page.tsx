@@ -1,5 +1,6 @@
 import ClientPage      from "@/components/ClientPage";
 import type {Metadata} from "next";
+import Link            from "next/link";
 
 export const metadata: Metadata = {
   title: "デコ文字メーカー｜枠デコ",
@@ -17,9 +18,9 @@ export default function Page() {
         </h1>
         <p className="text-xs opacity-70 leading-snug">
           X（旧Twitter）投稿向けのデコ文字・枠デコを作れる無料ツール。
-          <a href="../guide/waku" className="underline ml-1">
+          <Link href="/guide/waku" className="underline ml-1">
             使い方
-          </a>
+          </Link>
         </p>
       </section>
       <ClientPage mode="waku"/>

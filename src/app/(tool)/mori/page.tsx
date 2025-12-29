@@ -1,5 +1,6 @@
 import ClientMoriPage  from "@/components/ClientMoroPage";
 import type {Metadata} from "next";
+import Link            from "next/link";
 import React           from "react";
 
 export const metadata: Metadata = {
@@ -16,9 +17,9 @@ export default function MoriPage() {
       </h1>
       <p className="text-xs opacity-70 leading-snug">
         装飾記号を多めに使った文字装飾モードです。名前や短文を目立たせたいときに使えます。
-        <a href="../../guide/mori" className="underline ml-1">
+        <Link href="/guide/mori" className="underline ml-1">
           使い方
-        </a>
+        </Link>
       </p>
     </section>
     <ClientMoriPage/>
