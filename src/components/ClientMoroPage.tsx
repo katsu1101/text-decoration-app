@@ -105,9 +105,6 @@ export default function ClientMoriPage() {
                 "focus:ring-black/10 dark:focus:ring-white/15")}
               placeholder={"ここに入力して、範囲選択してからボタンで装飾します"}
             />
-            <div className="xlike text-[15px] leading-5">
-              Tojou Linca k̄ āw̄ äīī
-            </div>
             <div className="mt-2 text-xs opacity-80">{hint}</div>
           </section>
 
