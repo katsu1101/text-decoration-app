@@ -6,6 +6,16 @@ export const jpModeConfig: ModeConfig = {
   example: "7月4日は\n戸定梨香の誕生日！",
   patterns: [
     {
+      id: "flour",
+      title: "花飾り",
+      buildMeasured: (t, measurer) =>
+        makeBoxMeasured(splitLines(t), {
+          topLeft: "𒀭", top: "𒈔", topRight: "𒀭",
+          left: "𒅒", right: "𒅒",
+          bottomLeft: "𒀭", bottom: "𒈔", bottomRight: "𒀭",
+        }, measurer),
+    },
+    {
       id: "rule",
       title: "罫線（上下）",
       buildMeasured: (t, measurer) =>
