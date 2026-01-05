@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[77121,["/text-decoration-app/_next/static/chunks/0b76088e1749db7f.js","/text-decoration-app/_next/static/chunks/024187dd8d7e6be5.js","/text-decoration-app/_next/static/chunks/8a86eccc56937b80.js"],""]
+3:I[92309,["/text-decoration-app/_next/static/chunks/0b76088e1749db7f.js","/text-decoration-app/_next/static/chunks/024187dd8d7e6be5.js","/text-decoration-app/_next/static/chunks/8a86eccc56937b80.js"],"default"]
+4:I[53323,["/text-decoration-app/_next/static/chunks/281bac03e7aa5733.js","/text-decoration-app/_next/static/chunks/6ddb7c04e2aa3207.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"buildId":"y6FX9GVedOHnBNpq4Qg9n","rsc":["$","$1","c",{"children":[[["$","section",null,{"className":"px-4 pt-2 max-w-[1100px] mx-auto","children":[["$","h1",null,{"className":"text-sm font-medium leading-tight","children":"もり文字"}],["$","p",null,{"className":"text-xs opacity-70 leading-snug","children":["装飾記号を多めに使った文字装飾モードです。名前や短文を目立たせたいときに使えます。",["$","$L2",null,{"href":"/guide/mori","className":"underline ml-1","children":"使い方"}]]}]]}],["$","$L3",null,{}]],[["$","script","script-0",{"src":"/text-decoration-app/_next/static/chunks/8a86eccc56937b80.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
+6:null

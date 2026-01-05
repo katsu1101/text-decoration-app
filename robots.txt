@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://katsu1101.github.io/text-decoration-app/sitemap.xml
