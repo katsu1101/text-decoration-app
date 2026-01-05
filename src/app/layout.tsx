@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteMeta.basePath}/og-image.png`,
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: siteMeta.name,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     creator: "@katsu1101",
     title: siteMeta.name,
     description: siteMeta.description,
-    images: [`${siteMeta.basePath}/og-image.png`],
+    images: ["/og-image.png"],
   },
 };
 
